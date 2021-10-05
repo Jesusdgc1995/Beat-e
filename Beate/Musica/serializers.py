@@ -10,16 +10,22 @@ class ArtistaSerial(serializers.ModelSerializer):
 
 class AlbumSerial(serializers.ModelSerializer):
     class Meta:
-        models: Album
+        model: Album
         fields = '__all__'
 
 class PistaSerial(serializers.ModelSerializer):
     class Meta:
-        models= Pista
+        model= Pista
         fields = '__all__'
 
 class ListaReproduccionSerial(serializers.ModelSerializer):
     class Meta:
-        models = ListaReproduccion
+        model = ListaReproduccion
         fields = '__all__'
+
+class SeguidoresListaSerial(serializers.ModelSerializer):
+    class Meta:
+        model = SeguidorLista
+        fields = '__all__'
+
 

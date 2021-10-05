@@ -10,6 +10,8 @@ class Usuario(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=30)
+    isAdmin = models.BooleanField(default=False)
+    isActivo = models.BooleanField(default=True)
 
     def __str__(self) -> str:
         return self.user

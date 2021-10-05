@@ -54,11 +54,20 @@ class Pista(FormatoGeneral):
         self.album.nuevaReproduccion()
 
 
-
-
-
 class ListaReproduccion(models.Model):
     usuarioCreador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
     pistas = models.ManyToManyField(Pista)
+
+    def nuevaReproduccion(self):
+        super().nuevaReproduccion()
+
+    def like(self):
+        super.like()
+
+class SeguidorLista(models.Model):
+    listaReproduccion = models.ForeignKey(ListaReproduccion, on_delete= models.CASCADE)
+    seguidores = models.ManyToManyField(Usuario)
+
+    
 
     
