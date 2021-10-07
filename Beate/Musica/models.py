@@ -7,6 +7,8 @@ from Usuarios.models import *
 class Artista(models.Model):
     user = models.ForeignKey(Perfil, on_delete=models.CASCADE)
     artisticName = models.CharField(max_length=100)
+    def __str__(self):
+        return self.artisticName
 
 class FormatoGeneral(models.Model):
     name = models.CharField(max_length=100)
@@ -17,7 +19,7 @@ class FormatoGeneral(models.Model):
         abstract = True
 
     def __str__(self) -> str:
-        return self.nombre
+        return self.name
 
     def like(self):
         self.numLikes +=1

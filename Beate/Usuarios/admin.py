@@ -8,4 +8,5 @@ admin.site.register(Post)
 admin.site.register(Comentario)
 admin.site.register(UsuarioSeguidor)
 admin.site.register(Like)
+admin.site.register(Perfil)
 
