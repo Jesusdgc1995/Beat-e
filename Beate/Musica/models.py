@@ -37,10 +37,18 @@ class Album(FormatoGeneral):
     cover = models.ImageField()
     releaseDate = models.DateField()
 
+class Genero(models.Model):
+    nombre = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre
+
 
 class Pista(FormatoGeneral):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    gender = models.ForeignKey(Genero, on_delete=models.SET_NULL, null=True)
     soundFile = models.FileField()
+    releaseDate = models.DateField()
 
     def like(self):
         super().like()
@@ -66,6 +74,7 @@ class ListaReproduccion(models.Model):
 class SeguidorLista(models.Model):
     playList = models.ForeignKey(ListaReproduccion, on_delete= models.CASCADE)
     followers = models.ManyToManyField(Perfil)
+    
 
     
 

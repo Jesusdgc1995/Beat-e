@@ -16,7 +16,7 @@ class RegistrarAPI(views.APIView):
         if user.is_valid():
             user.save()
             return Response({"Bienvenido":True})
-        return Response(usuario.errors, HTTP_400_BAD_REQUEST)
+        return Response(user.errors, HTTP_400_BAD_REQUEST)
     pass
 
 class LogIn(views.APIView):
@@ -70,3 +70,4 @@ class PostAPI(viewsets.ModelViewSet):
 class LikeAPI(viewsets.ModelViewSet):
     serializer_class = LikeSerial
     queryset = Like.objects.all()
+

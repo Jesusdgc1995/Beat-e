@@ -4,19 +4,6 @@ from django.db.models.fields.related import ForeignKey
 from django.contrib.auth import get_user_model
 
 # Create your models here.
-"""
-Esta clase no se crea sino que se importa desde los usuarios de django => from django.contrib.auth import get_user_model
-class Usuario(models.Model):
-    user = models.CharField(max_length=30)
-    name = models.CharField(max_length=100)
-    email = models.EmailField()
-    password = models.CharField(max_length=30)
-    isAdmin = models.BooleanField(default=False)
-    isActive = models.BooleanField(default=True)
-
-    def __str__(self) -> str:
-        return self.user
-"""
 
 class Perfil(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
@@ -24,7 +11,7 @@ class Perfil(models.Model):
     lastName = models.CharField(max_length=100)
     country = models.CharField(max_length=100, blank=True, null=True)
     # isAdmin = models.BooleanField(default=False)
-    # isActive = models.BooleanField(default=True)
+    isActive = models.BooleanField(default=True)
     profilePhoto = models.ImageField(blank=True, null=True)
     aboutMe = models.TextField(blank=True, null=True)
 
