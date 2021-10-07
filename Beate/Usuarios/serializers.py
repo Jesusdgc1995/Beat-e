@@ -1,4 +1,3 @@
-
 from django.db.models import fields
 from Usuarios.models import *
 from rest_framework import serializers
