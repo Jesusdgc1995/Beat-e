@@ -1,15 +1,17 @@
 
 from Usuarios.models import *
-
 from rest_framework import serializers
 
 class UsuarioSerial(serializers.ModelSerializer):
     class Meta:
-        model = Usuario
-        fields = ["user", "nombre", "email"]
+        model = get_user_model()
+        fields = ["username", "email", "password"]
+        extra_kwargs = {
+            "password":{"write_only":True, "style":{"input_type":"password"}},
+            "email":{"write_only":True}
+        }
 
-
-class PerfilSerial(serializers.ModelSerializer):
+class PerfilSerial(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Perfil
         fields = '__all__'
