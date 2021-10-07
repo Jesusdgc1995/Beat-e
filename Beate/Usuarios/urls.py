@@ -1,4 +1,5 @@
 from django.urls import path, include
+from rest_framework import routers
 from rest_framework.routers import DefaultRouter
 from Usuarios.views import *
 
@@ -10,6 +11,7 @@ router.register("usuarios_seguidores", UsuarioSeguidorAPI)
 router.register("comentarios", ComentarioAPI)
 router.register("posts", PostAPI)
 router.register("likes", LikeAPI)
+
 
 urlpatterns = [
     path("crud/", include(router.urls)),

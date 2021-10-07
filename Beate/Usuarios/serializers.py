@@ -1,6 +1,10 @@
-
+from django.db.models import fields
 from Usuarios.models import *
 from rest_framework import serializers
+
+class LogeoSerial(serializers.ModelSerializer):
+    class Meta: Perfil
+    fields = ["username", "password"]
 
 class UsuarioSerial(serializers.ModelSerializer):
     class Meta:
