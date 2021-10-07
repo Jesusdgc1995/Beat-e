@@ -4,15 +4,14 @@ from Usuarios.models import *
 
 # Create your models here.
 
-
 class Artista(models.Model):
-    user = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    nombreArtistico = models.CharField(max_length=100)
+    user = models.ForeignKey(Perfil, on_delete=models.CASCADE)
+    artisticName = models.CharField(max_length=100)
 
 class FormatoGeneral(models.Model):
-    nombre = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     numLikes = models.IntegerField(default=0)
-    numReproducciones = models.IntegerField(default=0)
+    numReproductions = models.IntegerField(default=0)
 
     class Meta:
         abstract = True
@@ -28,45 +27,54 @@ class FormatoGeneral(models.Model):
         self.numLikes -=1
         self.save()
 
-    def nuevaReproduccion(self):
+    def newReproduction(self):
         self.nuevaReproduccion +=1
         self.save()
 
 
 class Album(FormatoGeneral):
-    artista = models.ForeignKey(Artista, on_delete=models.CASCADE)
-    caratura = models.ImageField()
-    fechaLanzamiento = models.DateField()
+    artist = models.ForeignKey(Artista, on_delete=models.CASCADE)
+    cover = models.ImageField()
+    releaseDate = models.DateField()
+
+class Genero(models.Model):
+    nombre = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre
 
 
 class Pista(FormatoGeneral):
     album = models.ForeignKey(Album, on_delete=models.CASCADE)
-    archivoSonido = models.FileField()
+    gender = models.ForeignKey(Genero, on_delete=models.SET_NULL, null=True)
+    soundFile = models.FileField()
+    releaseDate = models.DateField()
 
     def like(self):
         super().like()
 
         self.album.like()
 
-    def nuevaReproduccion(self):
-        super().nuevaReproduccion()
+    def newReproduction(self):
+        super().newReproduction()
 
-        self.album.nuevaReproduccion()
+        self.album.newReproduction()
 
 
 class ListaReproduccion(models.Model):
-    usuarioCreador = models.ForeignKey(Usuario, on_delete=models.CASCADE)
-    pistas = models.ManyToManyField(Pista)
+    usuarioCreador = models.ForeignKey(Perfil, on_delete=models.CASCADE)
+    tracks = models.ManyToManyField(Pista)
 
-    def nuevaReproduccion(self):
-        super().nuevaReproduccion()
+    def newReproduction(self):
+        super().newReproduction()
 
     def like(self):
         super.like()
 
 class SeguidorLista(models.Model):
-    listaReproduccion = models.ForeignKey(ListaReproduccion, on_delete= models.CASCADE)
-    seguidores = models.ManyToManyField(Usuario)
+    playList = models.ForeignKey(ListaReproduccion, on_delete= models.CASCADE)
+    followers = models.ManyToManyField(Perfil)
+    
 
     
 
