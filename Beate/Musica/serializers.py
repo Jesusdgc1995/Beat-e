@@ -23,7 +23,7 @@ class ListaReproduccionSerial(serializers.ModelSerializer):
         model = ListaReproduccion
         fields = '__all__'
 
-class SeguidoresListaSerial(serializers.ModelSerializer):
+class SeguidorListaSerial(serializers.ModelSerializer):
     class Meta:
         model = SeguidorLista
         fields = '__all__'
