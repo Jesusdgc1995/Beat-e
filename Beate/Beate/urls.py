@@ -16,10 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('usuarios/api/', include("Usuarios.urls")),
-    path('musica/api/', include("Musica.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('', include('App.urls')),
+    path('usuarios/api/', include(('Usuarios.urls', 'usuarios'), namespace='usuarios')),
+    path('musica/api/', include(('Musica.urls', 'musica'), namespace='musica')),
+]
+
+urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
