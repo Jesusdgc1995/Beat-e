@@ -1,0 +1,39 @@
+{% load static %}
+
+<header class="p-3 mb-3 border-bottom">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="{% url 'home' %}" class="d-flex align-items-center mb-2 mb-lg-0 px-5 text-dark text-decoration-none">
+                <img src="{% static 'img/logo-signup.svg' %}" height="40" role="img" aria-label="Beat-e">
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="#" class="nav-link px-2 link-dark active">Feed</a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">Mis Álbums </a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">Mis Playlist </a></li>
+                <li><a href="#" class="nav-link px-2 link-dark">Mis Favoritos</a></li>
+            </ul>
+
+            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                <input type="search" class="form-control" placeholder="Buscar..." aria-label="Buscar">
+            </form>
+
+            <div class="dropdown text-end">
+                <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="{% static 'img/jesus.png' %}" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
+                    <li><a class="dropdown-item" href="#">Configuración</a></li>
+                    <li><a class="dropdown-item" href="#">Plan</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Salir</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+

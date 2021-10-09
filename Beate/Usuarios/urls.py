@@ -14,7 +14,7 @@ router.register("likes", LikeAPI)
 
 
 urlpatterns = [
-    path("crud/", include(router.urls)),
+    path("crud/", include(router.urls), name='crud_usuarios'),
     path("register", RegistrarAPI.as_view()),
     path("logout", LogOut.as_view()),
     path("login", LogIn.as_view()),

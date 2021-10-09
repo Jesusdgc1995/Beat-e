@@ -7,17 +7,20 @@ from Usuarios.models import *
 class Artista(models.Model):
     user = models.ForeignKey(Perfil, on_delete=models.CASCADE)
     artisticName = models.CharField(max_length=100)
+    def __str__(self):
+        return self.artisticName
 
 class FormatoGeneral(models.Model):
     name = models.CharField(max_length=100)
     numLikes = models.IntegerField(default=0)
     numReproductions = models.IntegerField(default=0)
+    objects = models.Manager()
 
     class Meta:
         abstract = True
 
     def __str__(self) -> str:
-        return self.nombre
+        return self.name
 
     def like(self):
         self.numLikes +=1
@@ -31,17 +34,16 @@ class FormatoGeneral(models.Model):
         self.nuevaReproduccion +=1
         self.save()
 
-
 class Album(FormatoGeneral):
     artist = models.ForeignKey(Artista, on_delete=models.CASCADE)
     cover = models.ImageField()
     releaseDate = models.DateField()
 
 class Genero(models.Model):
-    nombre = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nombre
+        return self.name
 
 
 class Pista(FormatoGeneral):
@@ -52,13 +54,13 @@ class Pista(FormatoGeneral):
 
     def like(self):
         super().like()
-
         self.album.like()
 
     def newReproduction(self):
         super().newReproduction()
-
         self.album.newReproduction()
+    class Meta:
+        ordering = ('id',)
 
 
 class ListaReproduccion(models.Model):
@@ -78,4 +80,3 @@ class SeguidorLista(models.Model):
 
     
 
-    
