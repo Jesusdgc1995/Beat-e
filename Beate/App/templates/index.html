@@ -1,12 +1,12 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Beate - Página Inicio</title>
+  <title>Beate</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -31,30 +31,19 @@
   <!-- Estilos del Login -->
   <link href="{% static 'css/estilo_login.css' %}" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Beat-e - v4.6.0
-  * Template URL: https://bootstrapmade.com/free-bootstrap-app-landing-page-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
-
 </head>
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top  header-transparent ">
-    <div class="container d-flex align-items-center justify-content-between">
 
+<header id="header" class="fixed-top  header-transparent ">
+  <div class="container d-flex align-items-center justify-content-between">
       <div class="logo">
         <h1><a href="{% url 'home' %}">Beat-e</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="./img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
-
       <nav id="navbar" class="navbar" display="inline-block">
         <ul>
-        
+
           <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
           <li><a class="nav-link scrollto" href="#features">Características</a></li>
           <!-- <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li> -->
@@ -84,10 +73,8 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
     </div>
-  </header><!-- End Header -->
-
+</header>
   <!-- ============ Login =============== -->
 
   <!-- The Modal -->
@@ -119,6 +106,7 @@
     <div class="container" style="background-color:#f1f1f1">
       <button type="button" onclick="document.getElementById('ingreso').style.display='none'" class="cancelbtn">Cancelar</button>
       <a class="getstarted scrollto registroLink" href="{% url 'signup' %}">Registro</a>
+      <a class="getstarted scrollto registroLink" href="{% url 'home' %}">Home</a>
       <!-- <span class="psw">¿Olvidaste tu <a href="#">contraseña?</a></span> -->
     </div>
   </form>
@@ -427,7 +415,6 @@
       </div>
     </section> -->
     <!-- End Testimonials Section -->
-
     
     <!-- ======= Seccion de Precios ======= -->
     <section id="pricing" class="pricing">

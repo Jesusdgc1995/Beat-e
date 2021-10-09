@@ -1,0 +1,85 @@
+{% extends "home.html" %}
+
+{% block track_list %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4">
+            <div class="card border-0 rounded-3 shadow-lg p-3 mb-5 bg-body rounded">
+                <img src='media/{{ album.cover }}' class="card-img-top" alt="{{ album.name }}" width="100%">
+                <div class="card-body">
+                    <p class="card-text d-flex align-items-center">{{ pista.name }}</p>
+                    <div class="row">
+                        <audio id="player" src="" controls="controls" type="audio/mpeg"
+                               preload="preload"></audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+
+            <h2 class="album-title">{{ album.name }}</h2>
+            <p class="card-text">Artista: {{ album.artist }}</p>
+            {% for pista in pistas %}
+
+            <div class="card shadow-sm border-0 mb-2">
+                <div class="card-body card-pista">
+                    <div class="row">
+                        <div class="col-auto">
+                            <span id="{{ pista.soundFile }}" onclick="getPista(id)" class="material-icons play-song">play_arrow</span>
+                        </div>
+                        <div class="col">
+                            {{ pista.name }}
+                            <!--<audio id="play" src="./media/{{ pista.soundFile }}" controls="controls" type="audio/mpeg"
+                                   preload="preload"></audio>-->
+                        </div>
+                        <div class="col-auto">
+                            <span id="{{ pista.id }}" class="material-icons"
+                                  onclick="setFavorite(id)">favorite_border</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script type="application/javascript">
+        function getPista(source) {
+            var play_elements = document.getElementsByClassName('play-song');
+            var player = document.getElementById('player');
+            var pista_selected = document.getElementById(source);
+
+            player.src = './media/'+source;
+            console.log(source);
+            if(pista_selected.innerHTML == "play_arrow") {
+                 for(const icon of play_elements) {
+                    icon.innerHTML = "play_arrow";
+                 }
+                pista_selected.innerHTML = "stop";
+                player.play();
+            } else {
+                pista_selected.innerHTML = "play_arrow";
+                player.pause();
+            }
+
+        }
+
+        function setFavorite(id) {
+            var icon_favorite = document.getElementById(id);
+            console.log(icon_favorite.innerHTML)
+            if(icon_favorite.innerHTML == "favorite_border") {
+                icon_favorite.innerHTML = "favorite";
+                icon_favorite.setAttribute("style", "color: rgba(255,82,110,1.0)");
+            } else {
+                icon_favorite.innerHTML = "favorite_border";
+                icon_favorite.removeAttribute("style");
+            }
+        }
+
+
+
+
+
+
+    </script>
+    {% endblock %}

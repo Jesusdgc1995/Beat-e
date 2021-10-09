@@ -81,12 +81,12 @@
   
       <div class="container">
         <label for="uname"><b>Nombre de Usuario</b></label>
-        <input type="text" placeholder="Nombre de Usuario" name="uname" required>
+        <input id="email" type="text" placeholder="Nombre de Usuario" name="uname" required>
   
         <label for="psw"><b>Contraseña</b></label>
-        <input type="password" placeholder="Contraseña" name="psw" required>
+        <input id="password" type="password" placeholder="Contraseña" name="psw" required>
   
-        <button type="submit">Login</button>
+        <button onclick="login(event)">Login</button>
         <label>
           <input type="checkbox" checked="checked" name="remember"> Recordarme
         </label>
@@ -111,6 +111,13 @@
         if (event.target == modal) {
             modal.style.display = "none";
         }
+    }
+    var email = document.getElementById("email");
+    var pass = document.getElementById("password");
+    login() {
+        console.log("Iniciando sesión");
+        console.log(email);
+        console.log(pass);
     }
     </script>
   
