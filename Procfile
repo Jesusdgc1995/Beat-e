@@ -1,1 +1,0 @@
-web: gunicorn backend.beate_project.wsgi --log-file -
