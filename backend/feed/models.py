@@ -12,7 +12,7 @@ class Post(models.Model):
         ordering = ('created',)
 
     def __str__(self):
-        return f'Creado por {self.user}'
+        return f'{self.id}'
 
     def like(self):
         self.numLikes += 1
@@ -34,7 +34,7 @@ class Comment(models.Model):
         ordering = ('created',)
 
     def __str__(self):
-        return f'Commentario de {self.user}'
+        return f'Comentario de {self.user}'
 
     def like(self):
         self.numLikes += 1
