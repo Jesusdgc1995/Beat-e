@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beate</title>
+</head>
+
+<body>
+    <ul>
+        <li><a href="{% url 'feed' %}">Feed</a></li>
+        <li><a href="{% url 'profile' %}">Mi Perfil</a></li>
+        <li><a href="{% url 'playlist' %}">Mis Playlist</a></li>
+        <li><a href="{% url 'albums' %}">Mis Álbumes</a></li>
+    </ul>
+    <h1>{% block title %} Beat-e {% endblock title %}</h1>
+    {% block content %}
+
+    {% endblock content %}
+</body>
+
+</html>

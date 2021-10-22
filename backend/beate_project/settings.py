@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-o(ad+bkkicp=+y@gh_sfc97p6d8hup$+n5d)h&khvwgw9um7u!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['pacific-crag-05327.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['pacific-crag-05327.herokuapp.com','127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -43,13 +43,15 @@ INSTALLED_APPS = [
     'rest_framework',
 
     # Local
-    'feed.apps.FeedConfig'
+    'feed.apps.FeedConfig',
+    'app.apps.AppConfig'
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
-    ]
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
 }
 
 MIDDLEWARE = [
@@ -68,7 +70,7 @@ ROOT_URLCONF = 'beate_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
