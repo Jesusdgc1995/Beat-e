@@ -30,13 +30,6 @@ def profile_page(request):
     """
     return render(request, 'app/profile/profile.html', {})
 
-# Feed page.
-def feed_page(request):
-    """
-    Muestra las vista con post de la comunidad
-    """
-    return render(request, 'app/feed/feed.html', {})
-
 # playlist page.
 def playlist_page(request):
     """

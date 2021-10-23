@@ -23,7 +23,8 @@ schema_view = get_schema_view(title='Beate API')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('app.urls')),
-    path('api/v1/', include('feed.urls')),
+    path('', include('feed.urls')),
+    path('api/v1/', include('api.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('docs/', include_docs_urls(title='Beat-e API')),
     path('schema/', schema_view, name='schema')
